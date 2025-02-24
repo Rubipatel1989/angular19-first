@@ -1,7 +1,7 @@
 # angular19-first
 ## Angular 19 study link
 https://www.youtube.com/watch?v=_PQ7NSppj3Q&t=3922s
-1.25.20
+1.28.31
 
 ## Installation
 1. npm install -g @angular/cli      [First Time need this commond, Also node & npm must installed]
