@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  // private router = inject(Router);
   title = 'Pawan Kumar Studying Angular';
   constructor() {
     console.log('Constructor');
@@ -19,4 +20,7 @@ export class HomeComponent {
   changeTitle() {
     this.title = 'Pawan Kumar Studying Angular that is great';
   }
+  // navigate() {
+  //   this.router.navigate(['/about']);
+  // }
 }
