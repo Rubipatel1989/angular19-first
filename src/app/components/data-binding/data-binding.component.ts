@@ -12,6 +12,7 @@ export class DataBindingComponent {
   courseDuration: string = '3 months';
   clsName = 'col-3';
   placeholder = 'Enter course name';
+  isActive: boolean = true;
 
   showAlert(){
     alert('Alert from data binding');

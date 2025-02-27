@@ -58,7 +58,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 # angular19-first
 ## Angular 19 study link
 https://www.youtube.com/watch?v=VhYWnIMV4jQ
-1.00.10
+1.05.55
 
 ## Installation
 1. npm install -g @angular/cli      [First Time need this commond, Also node & npm must installed]
