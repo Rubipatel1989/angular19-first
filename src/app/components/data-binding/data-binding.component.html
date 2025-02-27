@@ -5,10 +5,12 @@
             <div class="col-6 bg-warning p-3">
                 form .ts to .html
                 <br>
-                => interpolation & property binding   
+                => interpolation & property binding
             </div>
             <div class="col-6 bg-secondary p-3">
-                form .html to .ts 
+                form .html to .ts
+                <br>
+                => event binding
             </div>
         </div>
     </div>
@@ -20,9 +22,32 @@
     <div class="col-3">
         course name: {{courseName}}<br>
         <h2>{{courseDuration}}</h2>
-
     </div>
     <div class="col-3">
         <input type="text" value="{{courseName}}">
-
+    </div>
+    <div class="col-3">
+        <input type="text" [value]="courseName">
+    </div>
+    <div [class]="clsName">
+        <input type="text" [placeholder]="placeholder">
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-primary"(click)="showAlert()">Show Alert</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-primary" (click)="showMessage('I am best')">Show Alert 2</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="showMessage('I am not best')">Show Alert 3</button>
+    </div>
+    <!-- <div class="col-3">
+        <select class="form-control" (change)="showMessage($event.target.value)">
+            <option value="Angular">Angular</option>
+            <option value="React">React</option>
+            <option value="Vue">Vue</option>
+        </select>
+    </div> -->
 </div>
