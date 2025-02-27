@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './directive.component.css'
 })
 export class DirectiveComponent {
-  title = "Hello Directive";
+  title = "Hello Directive [NgIf, NgFor]";
   isDiv1Visible: boolean = true;
   isDiv2Visible: boolean = true;
   num1 = 0;
