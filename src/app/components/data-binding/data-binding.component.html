@@ -1,1 +1,28 @@
-<p>data-binding works!</p>
+<div class="row">
+    <div class="col-6 bg-success text-center p-3">
+        <h3>One way data binding</h3>
+        <div class="row">
+            <div class="col-6 bg-warning p-3">
+                form .ts to .html
+                <br>
+                => interpolation & property binding   
+            </div>
+            <div class="col-6 bg-secondary p-3">
+                form .html to .ts 
+            </div>
+        </div>
+    </div>
+    <div class="col-6 bg-danger text-center p-3">
+        <h3>Two way data binding</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        course name: {{courseName}}<br>
+        <h2>{{courseDuration}}</h2>
+
+    </div>
+    <div class="col-3">
+        <input type="text" value="{{courseName}}">
+
+</div>
