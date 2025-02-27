@@ -1,1 +1,54 @@
-<h3>{{title}}</h3>
+<div class="container">
+    <h3>{{title}}</h3>
+    <div class="row">
+        <div class="col-3">
+            <div class="bg-primary p-3" *ngIf="isDiv1Visible">
+                Div 1
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="bg-primary p-3" *ngIf="isDiv2Visible">
+                Div 2
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="bg-primary p-3" *ngIf="num1 == num2">
+                Div 3
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <div class="col-6">
+                    <label>Select Cost</label>
+                    <select class="form-control" [(ngModel)]="selectedCaste">
+                        <option value="">Select</option>
+                        <option value="OBC">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="GEN">GEN</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-6" *ngIf="selectedCaste == 'Other'">
+                    <label>Other Cost</label>
+                    <input type="text" placeholder="Enter Other" class="form-control">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row pt-3">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+            <button class="btn btn-primary mx-2" (click)="showDiv1()">Show</button>
+        </div>
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="hideShowDiv2(false)">Hide</button>
+            <button class="btn btn-success mx-2" (click)="hideShowDiv2(true)">Show</button>
+        </div>
+        <div class="col-3 text-center">
+            <input type="text" placeholder="Num 1" [(ngModel)]="num1">
+            <input type="text" class="mx-2" placeholder="Num 2" [(ngModel)]="num2">
+        </div>
+    </div>
+</div>
