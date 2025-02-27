@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './directive.component.css'
 })
 export class DirectiveComponent {
-
+  title="Hello Directive";
 }

@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './variables.component.css'
 })
 export class VariablesComponent {
-  firstName: string = 'Pawan Kumar';
-  lastName: string = 'Gupta';
+  title = 'Hello Variables';
+  firstName: string = 'Pawan';
+  lastName: string = 'Kumar';
   Age: number = 25;
   Address: string = 'Noida';
   Wife:string;

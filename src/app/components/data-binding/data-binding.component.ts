@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './data-binding.component.css'
 })
 export class DataBindingComponent {
+  title = 'Hello Data Binding';
   courseName: string = 'Angular 19';
   courseDuration: string = '3 months';
   clsName = 'col-3';
