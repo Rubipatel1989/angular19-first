@@ -37,6 +37,50 @@
         </div>
 
     </div>
+    <div class="row pt-3 pb-3">
+        <div class="col-3">
+            @if(isDiv1Visible==true){
+            <div class="bg-primary p-3">
+                Div 111
+            </div>
+            } @else {
+            <div class="bg-danger p-3">
+                Div 111
+            </div>
+            }
+
+        </div>
+        <div class="col-3">
+            <div class="bg-primary p-3" *ngIf="isDiv2Visible">
+                Div 222
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="bg-primary p-3" *ngIf="num1 == num2">
+                Div 333
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <div class="col-6">
+                    <label>Select Cost</label>
+                    <select class="form-control" [(ngModel)]="selectedCaste">
+                        <option value="">Select</option>
+                        <option value="OBC">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="GEN">GEN</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-6" *ngIf="selectedCaste == 'Other'">
+                    <label>Other Cost</label>
+                    <input type="text" placeholder="Enter Other" class="form-control">
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div class="row pt-3">
         <div class="col-3 text-center">
             <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
@@ -49,6 +93,69 @@
         <div class="col-3 text-center">
             <input type="text" placeholder="Num 1" [(ngModel)]="num1">
             <input type="text" class="mx-2" placeholder="Num 2" [(ngModel)]="num2">
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col-3">
+            <ul>
+                <li *ngFor="let city of cityList">
+                    {{city}}
+                </li>
+            </ul>
+            <ol>
+                @for(item of cityList; track $index){
+                <li>{{item}}</li>
+                }
+            </ol>
+        </div>
+        <div class="col-3">
+            <select class="form-control">
+                <option value="">Select</option>
+                <option *ngFor="let city of cityList" [value]="city">
+                    {{city}}
+                </option>
+            </select>
+        </div>
+        <div class="col-5">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let city of studentList; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{city.name}}</td>
+                        <td>{{city.city}}</td>
+                        <td>
+                            @if(city.grade == "A"){
+                            <span class="text-success">A</span>
+                            } @else if(city.grade == "A+"){
+                            <span class="text-warning">A+</span>
+                            } @else if(city.grade == "A++"){
+                            <span class="text-danger">A++</span>
+                            } @else if(city.grade == "B"){
+                            <span class="text-info">A+++</span>
+                            } @else if(city.grade == "B+"){
+                            <span class="text-info">B+</span>
+                            } @else if(city.grade == "B++"){
+                            <span class="text-info">B++</span>
+                            } @else {
+                            <span class="text-info">C</span>}
+                        </td>
+                        <td>
+                            <span *ngIf="city.isActive">Active</span>
+                            <span *ngIf="!city.isActive">Not Active</span>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
         </div>
     </div>
 </div>
