@@ -158,4 +158,43 @@
             </table>
         </div>
     </div>
+    <div class="row pt-3">
+        <div class="col-3">
+            <div class="p-3" [ngClass]="studDivClassName">
+                Student 1
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-3" [ngClass]="studEmpClassName">
+                Employee 
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-3" [ngClass]="productClassName">
+                Product 
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-3" [ngClass]="isOrderActive==true?'bg-success':'bg-danger'">
+                Orders 
+            </div>
+        </div>
+        
+    </div>
+    <div class="row pt-3"> 
+        <div class="col-3">       
+
+        </div>
+        <div class="col-3">
+           <input type="text" [(ngModel)]="studEmpClassName">
+        </div>
+        <div class="col-3">
+            <button class="btn btn-primary" (click)="addProductClass('green')">Green</button>
+            <button class="btn btn-danger mx-2" (click)="addProductClass('red')">Red</button>
+        </div>
+        <div class="col-3">
+            <input type="checkbox" [(ngModel)]="isOrderActive">
+        </div>
+        
+    </div>
 </div>

@@ -1,10 +1,10 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-directive',
-  imports: [NgIf, FormsModule, NgFor],
+  imports: [NgIf, FormsModule, NgFor, NgClass],
   templateUrl: './directive.component.html',
   styleUrl: './directive.component.css'
 })
@@ -49,6 +49,10 @@ export class DirectiveComponent {
     }
     
   ]
+  studDivClassName = 'bg-success';
+  studEmpClassName = 'bg-danger';
+  productClassName = 'bg-info';
+  isOrderActive:boolean = false;
   showDiv1() {
     this.isDiv1Visible = true;
   }
@@ -58,5 +62,14 @@ export class DirectiveComponent {
 
   hideShowDiv2(isDisplay: boolean) {
     this.isDiv2Visible = isDisplay;
+  }
+  addProductClass(colorName: string) {
+   if(colorName == 'green'){  
+    this.productClassName = 'bg-success';
+   } else if(colorName == 'red'){
+    this.productClassName = 'bg-danger';
+   } else {
+    this.productClassName = 'bg-info';
+   }
   }
 }
