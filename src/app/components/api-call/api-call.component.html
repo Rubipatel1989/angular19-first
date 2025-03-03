@@ -1,1 +1,11 @@
 <p>api-call works!</p>
+<button (click)="getAllUsers()">Get All Users</button>
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let user of jsonUsers">
+                {{user.username}}
+            </li>
+        </ul>
+    </div>
+</div>
