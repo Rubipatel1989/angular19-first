@@ -1,13 +1,7 @@
 <div class="container-fluid mt-4">
     <div class="row">
-
-        
-        <div class="row">
-
         <h2 class="mb-3 text-center">User Management</h2>
-            <button class="btn btn-primary mb-3" onclick="toggleForm()">Add User</button>
-
-            <!-- User List Table -->
+        <div class="col-7">
             <div class="row">
                 <table class="table table-bordered table-striped">
                     <thead class="table-dark">
@@ -21,47 +15,63 @@
                         </tr>
                     </thead>
                     <tbody id="userTableBody">
+                        @for (item of userList; track $index){
                         <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>U4t4H example.com</td>
-                            <td>John Doe</td>
-                            <td>Admin</td>
-                            <td>
-                                <button class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger mx-2">Delete</button>
+                            <td>{{item.userId}}</td>
+                            <td>{{item.userName}}</td>
+                            <td>{{item.emailId}}</td>
+                            <td>{{item.fullName}}</td>
+                            <td>{{item.role}}</td>
+                            <td class="d-flex">
+                                <!-- I need Edit & Delete Icon-->
+                                <button class="btn btn-primary" (click)="editUser($index)">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn btn-danger mx-2" (click)="deleteUser($index)">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
+                        }
+                        
                     </tbody>
                 </table>
             </div>
-
-            <!-- Side Panel Form -->
-            <div class="col-4" id="userFormPanel" style="display: none;">
-                <div class="card">
-                    <div class="card-header">User Form</div>
-                    <div class="card-body">
-                        <form id="userForm">
-                            <div class="mb-2">
-                                <label for="userName" class="form-label">User Name</label>
-                                <input type="text" class="form-control" id="userName" required>
-                            </div>
-                            <div class="mb-2">
-                                <label for="emailId" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailId" required>
-                            </div>
-                            <div class="mb-2">
-                                <label for="fullName" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="fullName">
-                            </div>
-                            <div class="mb-2">
-                                <label for="role" class="form-label">Role</label>
-                                <input type="text" class="form-control" id="role">
-                            </div>
+        </div>
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">Add User</div>
+                <div class="card-body">
+                    <form id="userForm">
+                        <div class="col-12">
+                            <label for="userName" class="form-label">User Id</label>
+                            <input type="text" class="form-control" id="userId" placeholder="Auto Generated">
+                        </div>
+                        <div class="col-12">
+                            <label for="userName" class="form-label">User Name</label>
+                            <input type="text" class="form-control" id="userName" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="emailId" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailId" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullName">
+                        </div>
+                        <div class="col-12">
+                            <label for="role" class="form-label">Role</label>
+                            <input type="text" class="form-control" id="role">
+                        </div>
+                        <div class="col-12">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password">    
+                        </div>
+                        <div class="col-12 mt-3">
                             <button type="submit" class="btn btn-success">Save</button>
-                            <button type="button" class="btn btn-secondary" onclick="toggleForm()">Cancel</button>
-                        </form>
-                    </div>
+                        </div>
+                        
+                    </form>
                 </div>
             </div>
         </div>

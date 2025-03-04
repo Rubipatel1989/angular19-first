@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -7,12 +8,27 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
-  @ViewChild('userFormPanel', { static: false }) formPanel!: ElementRef;
+  http = inject(HttpClient);
+  userList : any []= [];
 
-  toggleForm() {
-    if (this.formPanel) {
-      const panel = this.formPanel.nativeElement;
-      panel.style.display = (panel.style.display === 'none' || panel.style.display === '') ? 'block' : 'none';
-    }
+  constructor(){
+    this.getUsers();
+  }
+  getUsers(){ 
+    this.http.get('https://projectapi.gerasim.in/api/Complaint/GetAllUsers').subscribe((response: any) => {
+      console.log(response);
+      if (response.result) {
+        console.log(response.data);
+        this.userList = response.data;
+      } else {
+        alert(response.message);
+      }
+    })
+  }
+  editUser(index: number){
+    console.log(index);
+  }
+  deleteUser(index: number){
+    console.log(index);
   }
 }
