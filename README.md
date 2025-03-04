@@ -67,3 +67,5 @@ https://www.youtube.com/watch?v=VhYWnIMV4jQ
 4. ng serve
 ## Generate Component
  ng g c components/variables
+ ## Start a specific Port
+  ng serve --port 4209
