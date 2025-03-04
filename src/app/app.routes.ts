@@ -20,9 +20,9 @@ export const routes: Routes = [
             { path: 'directive', component: DirectiveComponent },
             { path: 'data-binding', component: DataBindingComponent },
             { path: 'variables', component: VariablesComponent },
-            {path:'template-form', component: TemplateFormComponent},
-            {path:'api-call', component:ApiCallComponent},
-            {path:'user', component:UserComponent}
+            { path: 'template-form', component: TemplateFormComponent },
+            { path: 'api-call', component: ApiCallComponent },
+            { path: 'user', component: UserComponent }
 
         ]
     }
