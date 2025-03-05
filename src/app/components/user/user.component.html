@@ -23,7 +23,7 @@
                     <tbody id="userTableBody">
                         @for (item of userList; track $index){
                         <tr>
-                            <td>{{item.userId}}</td>
+                            <td>{{$index +1}}</td>
                             <td>{{item.userName}}</td>
                             <td>{{item.emailId}}</td>
                             <td>{{item.fullName}}</td>
@@ -39,42 +39,40 @@
                             </td>
                         </tr>
                         }
-
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-5" style="padding-left: 30px;">
             <div class="card">
                 <div class="card-header">Add User</div>
                 <div class="card-body">
                     <form id="userForm">
                         <div class="col-12">
-                            <label for="userName" class="form-label">User Id</label>
-                            <input type="text" class="form-control" id="userId" placeholder="Auto Generated">
-                        </div>
-                        <div class="col-12">
                             <label for="userName" class="form-label">User Name</label>
-                            <input type="text" class="form-control" id="userName" required>
+                            <input type="text" [(ngModel)]="userObj.userName" name="userName" class="form-control"
+                                id="userName" required>
                         </div>
                         <div class="col-12">
                             <label for="emailId" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="emailId" required>
+                            <input type="email" [(ngModel)]="userObj.emailId" name="emailId" class="form-control"
+                                id="emailId" required>
                         </div>
                         <div class="col-12">
                             <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName">
+                            <input type="text" [(ngModel)]="userObj.fullName" name="fullName" class="form-control"
+                                id="fullName">
                         </div>
                         <div class="col-12">
                             <label for="role" class="form-label">Role</label>
-                            <input type="text" class="form-control" id="role">
+                            <input type="text" [(ngModel)]="userObj.role" name="role" class="form-control" id="role">
                         </div>
                         <div class="col-12">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" [(ngModel)]="userObj.password" name="password" class="form-control" id="password">
                         </div>
                         <div class="col-12 mt-3">
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="submit" class="btn btn-success" (click)="onSaveUser()">Save</button>
                         </div>
 
                     </form>
