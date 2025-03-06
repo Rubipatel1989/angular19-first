@@ -54,12 +54,18 @@ export class UserComponent {
     this.userObj = data;
     console.log(data);
   }
-  deleteUser(index: number){
-    console.log(index);
+  OndeleteUser(index: number){
+    if(confirm('Are you sure you want to delete this user?')){
+      this.http.delete('https://projectapi.gerasim.in/api/Complaint/DeleteUserByUserId?userId='+index).subscribe((response: any) => {
+        console.log(response);
+        this.getUsers();
+      });
+    }
+    
   }
   onUpdteUser(){
     console.log(this.userObj);
-    this.http.put('https://projectapi.gerasim.in/api/Complaint/UpdateUser', this.userObj).subscribe((response: any) => {
+    this.http.post('https://projectapi.gerasim.in/api/Complaint/UpdateUser', this.userObj).subscribe((response: any) => {
       console.log(response);
       this.getUsers();
     });
