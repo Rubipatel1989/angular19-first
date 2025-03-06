@@ -6,6 +6,7 @@ import { DirectiveComponent } from './components/directive/directive.component';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { ApiCallComponent } from './components/api-call/api-call.component';
 import { UserComponent } from './components/user/user.component';
+import { UserReactiveComponent } from './components/user-reactive/user-reactive.component';
 
 export const routes: Routes = [
     {
@@ -22,7 +23,8 @@ export const routes: Routes = [
             { path: 'variables', component: VariablesComponent },
             { path: 'template-form', component: TemplateFormComponent },
             { path: 'api-call', component: ApiCallComponent },
-            { path: 'user', component: UserComponent }
+            { path: 'user', component: UserComponent },
+            { path: 'user-reactive', component: UserReactiveComponent },
 
         ]
     }
