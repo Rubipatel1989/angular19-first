@@ -30,7 +30,7 @@
                             <td>{{item.role}}</td>
                             <td class="d-flex">
                                 <!-- I need Edit & Delete Icon-->
-                                <button class="btn btn-primary" (click)="editUser($index)">
+                                <button class="btn btn-primary" (click)="editUser(item)">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                                 <button class="btn btn-danger mx-2" (click)="deleteUser($index)">
@@ -72,7 +72,12 @@
                             <input type="password" [(ngModel)]="userObj.password" name="password" class="form-control" id="password">
                         </div>
                         <div class="col-12 mt-3">
-                            <button type="submit" class="btn btn-success" (click)="onSaveUser()">Save</button>
+                            @if(userObj.userId == 0){
+                                <button type="submit" class="btn btn-success" (click)="onSaveUser()">Save</button>
+                            } @else {
+                                <button type="submit" class="btn btn-success" (click)="onUpdteUser()">Update</button>
+                            }
+                            <button type="reset" class="btn btn-danger mx-2">Reset</button>
                         </div>
 
                     </form>
