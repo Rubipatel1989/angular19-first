@@ -44,14 +44,18 @@ export class UserComponent {
   }
   onSaveUser(){
     console.log("Request:", this.userObj);
-    this.http.post('https://projectapi.gerasim.in/api/Complaint/AddNewUser', this.userObj).subscribe((response: any) => {
-      console.log(response);
-      if(response.result){
-        this.getUsers();
-      } else{
-        alert(response.message);
-      } 
-    });
+    if(this.userObj.userName){
+      this.http.post('https://projectapi.gerasim.in/api/Complaint/AddNewUser', this.userObj).subscribe((response: any) => {
+        console.log(response);
+        if(response.result){
+          this.getUsers();
+        } else{
+          alert(response.message);
+        } 
+      });
+    } else{
+      alert('Please enter user details');
+    }    
   }
   editUser(data:any){
     this.userObj = data;
