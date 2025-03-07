@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class UserReactiveComponent {
   http = inject(HttpClient);
   isLoading: boolean = false;
+  isSideFormVisible: boolean = false;
   userObj: any = {
     "userId": 0,
     "userName": "",
@@ -41,7 +42,9 @@ export class UserReactiveComponent {
     })
   }
 
-
+  toggleSideForm(){
+    this.isSideFormVisible = !this.isSideFormVisible
+  };
   onSaveUser(){};
   onUpdteUser(){};
   editUser(data:any){};
