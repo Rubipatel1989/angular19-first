@@ -1,1 +1,87 @@
-<p>user-reactive works!</p>
+<div class="row mt-4">
+    <h2 class="mb-3 text-center">User Reactive Management</h2>
+    <div class="col-7">
+        <!-- Loader -->
+        <div *ngIf="isLoading" class="text-center my-3">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="row" *ngIf="!isLoading">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Full Name</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    @for (item of userList; track $index){
+                    <tr>
+                        <td>{{$index +1}}</td>
+                        <td>{{item.userName}}</td>
+                        <td>{{item.emailId}}</td>
+                        <td>{{item.fullName}}</td>
+                        <td>{{item.role}}</td>
+                        <td class="d-flex">
+                            <!-- I need Edit & Delete Icon-->
+                            <button class="btn btn-primary" (click)="editUser(item)">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button class="btn btn-danger mx-2" (click)="OndeleteUser(item.userId)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="offset-md-1 col-4">
+        <div class="card">
+            <div class="card-header">Add User</div>
+            <div class="card-body">
+                <form id="userForm">
+                    <div class="col-12">
+                        <label for="userName" class="form-label">User Name</label>
+                        <input type="text" [(ngModel)]="userObj.userName" name="userName" class="form-control"
+                            id="userName" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="emailId" class="form-label">Email</label>
+                        <input type="email" [(ngModel)]="userObj.emailId" name="emailId" class="form-control"
+                            id="emailId" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" [(ngModel)]="userObj.fullName" name="fullName" class="form-control"
+                            id="fullName">
+                    </div>
+                    <div class="col-12">
+                        <label for="role" class="form-label">Role</label>
+                        <input type="text" [(ngModel)]="userObj.role" name="role" class="form-control" id="role">
+                    </div>
+                    <div class="col-12">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" [(ngModel)]="userObj.password" name="password" class="form-control"
+                            id="password">
+                    </div>
+                    <div class="col-12 mt-3">
+                        @if(userObj.userId == 0){
+                        <button type="submit" class="btn btn-success" (click)="onSaveUser()">Save</button>
+                        } @else {
+                        <button type="submit" class="btn btn-success" (click)="onUpdteUser()">Update</button>
+                        }
+                        <button type="reset" class="btn btn-danger mx-2">Reset</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
