@@ -71,37 +71,37 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form id="userForm">
+                    <form id="userForm" [formGroup]="userForm">
                         <div class="mb-3">
                             <label for="userName" class="form-label">User Name</label>
-                            <input type="text" [(ngModel)]="userObj.userName" name="userName" class="form-control"
+                            <input type="text" formControlName="userName" class="form-control"
                                 id="userName" required>
                         </div>
                         <div class="mb-3">
                             <label for="emailId" class="form-label">Email</label>
-                            <input type="email" [(ngModel)]="userObj.emailId" name="emailId" class="form-control"
+                            <input type="email" formControlName="emailId" class="form-control"
                                 id="emailId" required>
                         </div>
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" [(ngModel)]="userObj.fullName" name="fullName" class="form-control"
+                            <input type="text" formControlName="fullName" class="form-control"
                                 id="fullName">
                         </div>
                         <div class="mb-3">
                             <label for="role" class="form-label">Role</label>
-                            <input type="text" [(ngModel)]="userObj.role" name="role" class="form-control" id="role">
+                            <input type="text" formControlName="role" class="form-control" id="role">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" [(ngModel)]="userObj.password" name="password" class="form-control"
+                            <input type="password" formControlName="password" class="form-control"
                                 id="password">
                         </div>
                         <div class="mt-3">
-                            @if(userObj.userId == 0){
+                           
                             <button type="submit" class="btn btn-success" (click)="onSaveUser()">Save</button>
-                            } @else {
-                            <button type="submit" class="btn btn-success" (click)="onUpdteUser()">Update</button>
-                            }
+                            
+                            <button type="submit" class="btn btn-warning mx-2" (click)="onUpdteUser()">Update</button>
+                           
                             <button type="reset" class="btn btn-danger mx-2">Reset</button>
                         </div>
                     </form>

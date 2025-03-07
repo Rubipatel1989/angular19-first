@@ -1,11 +1,11 @@
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, FormGroupName } from '@angular/forms';
 
 @Component({
   selector: 'app-user-reactive',
-  imports: [FormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './user-reactive.component.html',
   styleUrl: './user-reactive.component.css'
 })
@@ -13,23 +13,26 @@ export class UserReactiveComponent {
   http = inject(HttpClient);
   isLoading: boolean = false;
   isSideFormVisible: boolean = false;
-  userObj: any = {
-    "userId": 0,
-    "userName": "",
-    "emailId": "",
-    "fullName": "",
-    "role": "",
-    "createdDate": new Date(),
-    "password": "",
-    "projectName": "",
-    "refreshToken": "",
-    "refreshTokenExpiryTime": new Date()
-  };
-  userList : any []= [];
-  constructor(){
+  userForm: FormGroup = new FormGroup({
+    userId: new FormControl(0),
+    userName: new FormControl(''),
+    emailId: new FormControl(''),
+    fullName: new FormControl(''),
+    role: new FormControl(''),
+    password: new FormControl(''),
+    createdDate: new FormControl(new Date()),
+    projectName: new FormControl(''),
+    refreshToken: new FormControl(''),
+    refreshTokenExpiryTime: new FormControl(new Date()),
+
+
+  });
+  
+  userList: any[] = [];
+  constructor() {
     this.getUsers();
   }
-  getUsers(){ 
+  getUsers() {
     this.isLoading = true;
     this.http.get('https://projectapi.gerasim.in/api/Complaint/GetAllUsers').subscribe((response: any) => {
       console.log(response);
@@ -42,12 +45,35 @@ export class UserReactiveComponent {
     })
   }
 
-  toggleSideForm(){
+  toggleSideForm() {
     this.isSideFormVisible = !this.isSideFormVisible
   };
-  onSaveUser(){};
-  onUpdteUser(){};
-  editUser(data:any){};
-  OndeleteUser(index: number){};
-    
+  onSaveUser() { 
+    const formValue = this.userForm.value;
+    this.http.post('https://projectapi.gerasim.in/api/Complaint/addnewuser', formValue).subscribe((response: any) => {
+      if(response.result){
+        this.getUsers();
+      } else{
+        alert(response.message);
+      }      
+    })
+  };
+  onUpdteUser() {
+    const formValue = this.userForm.value;
+    this.http.post('https://projectapi.gerasim.in/api/Complaint/UpdateUser', formValue).subscribe((response: any) => {
+      console.log(response);
+      this.getUsers();
+    })
+   };
+  editUser(data: any) {
+    this.isSideFormVisible = !this.isSideFormVisible
+    this.userForm.patchValue(data);
+   };
+  OndeleteUser(index: number) {
+    this.http.delete('https://projectapi.gerasim.in/api/Complaint/DeleteUserByUserId?userId=' + index).subscribe((response: any) => {
+      console.log(response);
+      this.getUsers();
+    })
+   };
+
 }
