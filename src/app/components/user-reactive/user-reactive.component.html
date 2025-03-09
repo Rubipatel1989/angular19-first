@@ -76,16 +76,43 @@
                             <label for="userName" class="form-label">User Name</label>
                             <input type="text" formControlName="userName" class="form-control"
                                 id="userName" required>
+                            <div class="text-danger">
+                                @if(userForm.get('userName')?.invalid && userForm.get('userName')?.touched || userForm.get('userName')?.dirty){
+                                    @if(userForm.get('userName')?.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                    @if(userForm.get('userName')?.errors?.['minlength']){
+                                        <span> Minimum length should be 5</span>
+                                    }
+                                }
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="emailId" class="form-label">Email</label>
                             <input type="email" formControlName="emailId" class="form-control"
                                 id="emailId" required>
+                            <div class="text-danger">
+                                @if(userForm.get('emailId')?.invalid && userForm.get('emailId')?.touched || userForm.get('emailId')?.dirty){
+                                    @if(userForm.get('emailId')?.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                    @if(userForm.get('emailId')?.errors?.['pattern']){
+                                        <span> Enter valid email</span>
+                                    }
+                                }
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Full Name</label>
                             <input type="text" formControlName="fullName" class="form-control"
                                 id="fullName">
+                            <div class="text-danger">
+                                @if(userForm.get('fullName')?.invalid && userForm.get('fullName')?.touched || userForm.get('fullName')?.dirty){
+                                    @if(userForm.get('fullName')?.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                }
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="role" class="form-label">Role</label>
@@ -95,6 +122,16 @@
                             <label for="password" class="form-label">Password</label>
                             <input type="password" formControlName="password" class="form-control"
                                 id="password">
+                            <div class="text-danger">
+                                @if(userForm.get('password')?.invalid && userForm.get('password')?.touched || userForm.get('password')?.dirty){
+                                    @if(userForm.get('password')?.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                    @if(userForm.get('password')?.errors?.['minlength']){
+                                        <span> Minimum length should be 5</span>
+                                    }
+                                }
+                            </div>
                         </div>
                         <div class="mt-3">
                            
