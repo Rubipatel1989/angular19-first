@@ -49,18 +49,46 @@
                 <form id="userForm">
                     <div class="col-12">
                         <label for="userName" class="form-label">User Name</label>
-                        <input type="text" [(ngModel)]="userObj.userName" name="userName" class="form-control"
+                        <input type="text" minlength="5" required #uName="ngModel" [(ngModel)]="userObj.userName" name="userName" class="form-control"
                             id="userName" required>
+                            <div class="text-danger">
+                                @if(uName.invalid && uName.touched || uName.dirty){
+                                    @if(uName.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                    @if(uName.errors?.['minlength']){
+                                        <span> Minimum length should be 5</span>
+                                    }
+                                }
+                               
+                            </div>
                     </div>
                     <div class="col-12">
                         <label for="emailId" class="form-label">Email</label>
-                        <input type="email" [(ngModel)]="userObj.emailId" name="emailId" class="form-control"
+                        <input type="email" required="true" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel" [(ngModel)]="userObj.emailId" name="emailId" class="form-control"
                             id="emailId" required>
+                            <div class="text-danger">
+                                @if(email.invalid && email.touched || email.dirty){
+                                    @if(email.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                    @if(email.errors?.['pattern']){
+                                        <span> Enter valid email</span>
+                                    }
+                                }
+                            </div>
                     </div>
                     <div class="col-12">
                         <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" [(ngModel)]="userObj.fullName" name="fullName" class="form-control"
+                        <input type="text" #fullName="ngModel" required [(ngModel)]="userObj.fullName" name="fullName" class="form-control"
                             id="fullName">
+                            <div class="text-danger">
+                                @if(fullName.invalid && fullName.touched || fullName.dirty){
+                                    @if(fullName.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                }
+                            </div>
                     </div>
                     <div class="col-12">
                         <label for="role" class="form-label">Role</label>
@@ -68,8 +96,18 @@
                     </div>
                     <div class="col-12">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" [(ngModel)]="userObj.password" name="password" class="form-control"
+                        <input type="password" required #password="ngModel" minlength="5" [(ngModel)]="userObj.password" name="password" class="form-control"
                             id="password">
+                            <div class="text-danger">
+                                @if(password.invalid && password.touched || password.dirty){
+                                    @if(password.errors?.['required']){
+                                        <span>This field is required</span>
+                                    }
+                                    @if(password.errors?.['minlength']){
+                                        <span> Minimum length should be 5</span>
+                                    }
+                                }
+                            </div>
                     </div>
                     <div class="col-12 mt-3">
                         @if(userObj.userId == 0){
