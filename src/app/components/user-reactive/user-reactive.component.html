@@ -134,13 +134,22 @@
                             </div>
                         </div>
                         <div class="mt-3">
-                           
-                            <button type="submit" class="btn btn-success" (click)="onSaveUser()">Save</button>
-                            
-                            <button type="submit" class="btn btn-warning mx-2" (click)="onUpdteUser()">Update</button>
-                           
+                            <button 
+                                type="submit" 
+                                class="btn btn-success" 
+                                [ngClass]="{ 'invisible': !isSaveButtonVisible }" 
+                                (click)="onSaveUser()">Save
+                            </button>                        
+                            <button 
+                                type="submit" 
+                                class="btn btn-warning mx-2" 
+                                [ngClass]="{ 'invisible': !isUpdateButtonVisible }" 
+                                (click)="onUpdteUser()">Update
+                            </button>                        
                             <button type="reset" class="btn btn-danger mx-2">Reset</button>
                         </div>
+                        
+                        
                     </form>
                 </div>
             </div>

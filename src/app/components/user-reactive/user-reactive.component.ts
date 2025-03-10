@@ -1,11 +1,11 @@
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, FormGroupName, Validators } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, FormGroupName, Validators, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-reactive',
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, NgClass],
   templateUrl: './user-reactive.component.html',
   styleUrl: './user-reactive.component.css'
 })
@@ -13,6 +13,8 @@ export class UserReactiveComponent {
   http = inject(HttpClient);
   isLoading: boolean = false;
   isSideFormVisible: boolean = false;
+  isSaveButtonVisible: boolean = true;
+  isUpdateButtonVisible: boolean = false;
   userForm: FormGroup = new FormGroup({
     userId: new FormControl(0),
     userName: new FormControl('',[Validators.required,Validators.minLength(5)]),
@@ -66,8 +68,11 @@ export class UserReactiveComponent {
     })
    };
   editUser(data: any) {
-    this.isSideFormVisible = !this.isSideFormVisible
+    this.isSideFormVisible = true;
+    this.isSaveButtonVisible = false;
+    this.isUpdateButtonVisible = true;
     this.userForm.patchValue(data);
+
    };
   OndeleteUser(index: number) {
     this.http.delete('https://projectapi.gerasim.in/api/Complaint/DeleteUserByUserId?userId=' + index).subscribe((response: any) => {
