@@ -23,6 +23,6 @@ export class ResourceApiComponent {
     loader: () => {
       return this.http.get<any[]>('https://jsonplaceholder.typicode.com/users');
     }
-});
+  });
 
 }
