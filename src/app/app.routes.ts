@@ -7,6 +7,7 @@ import { TemplateFormComponent } from './components/template-form/template-form.
 import { ApiCallComponent } from './components/api-call/api-call.component';
 import { UserComponent } from './components/user/user.component';
 import { UserReactiveComponent } from './components/user-reactive/user-reactive.component';
+import { ResourceApiComponent } from './components/resource-api/resource-api.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,7 @@ export const routes: Routes = [
             { path: 'api-call', component: ApiCallComponent },
             { path: 'user', component: UserComponent },
             { path: 'user-reactive', component: UserReactiveComponent },
+            {path: 'resource-api', component: ResourceApiComponent}
 
         ]
     }
