@@ -1,1 +1,25 @@
-<p>resource-api works!</p>
+<div class="row">
+    <div class="col-6 bg-success">
+        <h3>Resource</h3>
+        @if(userListResource.hasValue()){
+            <div>
+                <ul>
+                    <li *ngFor="let user of userListResource.value()">{{user.name}}</li>
+                </ul>
+            </div>
+        }
+    </div>
+    <div class="col-6 bg-warning">
+        <h3>Observable</h3>
+        @if(userList.hasValue()){
+            <div>
+                <ul>
+                    <li *ngFor="let user of userList.value()">{{user.name}}</li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+
+
