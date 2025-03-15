@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   loginObj: userLogin = new userLogin();
+  router = inject(Router);
+  onLogin(){
+    if(this.loginObj.userName == 'admin' && this.loginObj.password == 'admin'){
+      console.log('Login Success');
+      this.router.navigate(['/user']);
+      localStorage.setItem('angularHiddenUser', this.loginObj.userName);
+    } else{
+      alert('Invalid login details');
+    }
+    console.log(this.loginObj);
+  }
 }
 export class userLogin{
   userName: string;

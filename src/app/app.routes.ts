@@ -9,6 +9,7 @@ import { UserComponent } from './components/user/user.component';
 import { UserReactiveComponent } from './components/user-reactive/user-reactive.component';
 import { ResourceApiComponent } from './components/resource-api/resource-api.component';
 import { LoginComponent } from './components/login/login.component';
+import { checkLoginGuard } from './guard/check-login.guard';
 
 export const routes: Routes = [
     {
@@ -23,15 +24,16 @@ export const routes: Routes = [
     {
         path: '',
         component: LayoutComponent,
+        canActivate: [checkLoginGuard],
         children: [
-            { path: 'directive', component: DirectiveComponent },
-            { path: 'data-binding', component: DataBindingComponent },
-            { path: 'variables', component: VariablesComponent },
+            { path: 'directive', component: DirectiveComponent, canActivate: [checkLoginGuard] },
+            { path: 'data-binding', component: DataBindingComponent, canActivate: [checkLoginGuard] },
+            { path: 'variables', component: VariablesComponent, canActivate: [checkLoginGuard] },
             { path: 'template-form', component: TemplateFormComponent },
             { path: 'api-call', component: ApiCallComponent },
             { path: 'user', component: UserComponent },
             { path: 'user-reactive', component: UserReactiveComponent },
-            {path: 'resource-api', component: ResourceApiComponent}
+            { path: 'resource-api', component: ResourceApiComponent }
 
         ]
     }

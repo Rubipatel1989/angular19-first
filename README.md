@@ -69,5 +69,7 @@ https://www.youtube.com/watch?v=Z5oHV9pnv2U
 4. ng serve
 ## Generate Component
  ng g c components/variables
+ ## Generate guard
+ src/app/guard$ ng g g checkLogin
  ## Start a specific Port
   ng serve --port 4209

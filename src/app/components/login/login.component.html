@@ -9,12 +9,7 @@
         <input type="password" [(ngModel)]="loginObj.password" name="password" required="">
         <label>Password</label>
       </div>
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Submit
-      </a>  
+      <button class="btn btn-primary" type="submit" (click)="onLogin()">Submit</button>
+     
     </form>
   </div>
