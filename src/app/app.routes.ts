@@ -8,12 +8,17 @@ import { ApiCallComponent } from './components/api-call/api-call.component';
 import { UserComponent } from './components/user/user.component';
 import { UserReactiveComponent } from './components/user-reactive/user-reactive.component';
 import { ResourceApiComponent } from './components/resource-api/resource-api.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'directive',
+        redirectTo: 'login',
         pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: '',
