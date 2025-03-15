@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { DatePipe, JsonPipe, LowerCasePipe, NgIf, UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, UpperCasePipe, LowerCasePipe, DatePipe, JsonPipe],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })

@@ -7,6 +7,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
         </div>
+        <!-- {{userList | json}} -->
         <div class="row" *ngIf="!isLoading">
             <table class="table table-bordered table-striped">
                 <thead class="table-dark">
@@ -16,6 +17,7 @@
                         <th>Email</th>
                         <th>Full Name</th>
                         <th>Role</th>
+                        <th>Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -23,10 +25,11 @@
                     @for (item of userList; track $index){
                     <tr>
                         <td>{{$index +1}}</td>
-                        <td>{{item.userName}}</td>
+                        <td>{{item.userName |lowercase}}</td>
                         <td>{{item.emailId}}</td>
-                        <td>{{item.fullName}}</td>
+                        <td>{{item.fullName | uppercase}}</td>
                         <td>{{item.role}}</td>
+                        <td>{{item.createdDate | date: 'dd/MM/yyyy'}}</td>
                         <td class="d-flex">
                             <!-- I need Edit & Delete Icon-->
                             <button class="btn btn-primary" (click)="editUser(item)">
