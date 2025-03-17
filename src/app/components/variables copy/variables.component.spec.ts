@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResourceApiComponent } from './resource-api.component';
+import { VariablesComponent } from './variables.component';
 
-describe('ResourceApiComponent', () => {
-  let component: ResourceApiComponent;
-  let fixture: ComponentFixture<ResourceApiComponent>;
+describe('VariablesComponent', () => {
+  let component: VariablesComponent;
+  let fixture: ComponentFixture<VariablesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResourceApiComponent]
+      imports: [VariablesComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ResourceApiComponent);
+    fixture = TestBed.createComponent(VariablesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
