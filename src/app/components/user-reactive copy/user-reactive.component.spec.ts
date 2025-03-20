@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VariablesComponent } from './variables.component';
+import { UserReactiveComponent } from './user-reactive.component';
 
-describe('VariablesComponent', () => {
-  let component: VariablesComponent;
-  let fixture: ComponentFixture<VariablesComponent>;
+describe('UserReactiveComponent', () => {
+  let component: UserReactiveComponent;
+  let fixture: ComponentFixture<UserReactiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VariablesComponent]
+      imports: [UserReactiveComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VariablesComponent);
+    fixture = TestBed.createComponent(UserReactiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
